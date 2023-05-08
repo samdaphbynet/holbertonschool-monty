@@ -3,7 +3,7 @@
 int main(void)
 {
     stack_t *stack = NULL;
-    char opcode[5];
+    char opcode[10];
     unsigned int line_number = 1;
     int value;
 
@@ -13,7 +13,7 @@ int main(void)
         {
             if (scanf("%d", &value) != 1)
             {
-                printf("L%d: usage: push interger\n", line_number);
+                fprintf(stderr,"L%d: usage: push interger\n", line_number);
                 exit(EXIT_FAILURE);
             }
             push(&stack, line_number);
