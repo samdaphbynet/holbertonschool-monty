@@ -48,13 +48,12 @@ typedef struct global_s
 	char *arg;
 } global_t;
 
-global_t global;
+extern global_t global;
 
 void free_stack(stack_t *);
 int is_num(char *);
-
 void pop(stack_t **top, unsigned int i);
-
+void swap(stack_t **top, unsigned int i);
 void push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
 void pint(stack_t **, unsigned int);
