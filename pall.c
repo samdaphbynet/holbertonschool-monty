@@ -1,19 +1,22 @@
 #include "monty.h"
 
 /**
- * pall - function prints all the values in the stack from top to bottom.
- * 
- * 
-*/
+ * pall - Print all the values in the stack
+ *
+ * @top: Top of the stack
+ * @line: Current line count in the stack
+ *
+ * Return: (void)
+ */
 
-void pall(stack_t **stack, unsigned int line_number)
+void pall(stack_t **top, unsigned int line)
 {
-    (void)line_number;
-    stack_t *current = *stack;
-    
-    while (current != NULL)
-    {
-        printf("%d\n", current->n);
-        current = current->next;
-    }
+	(void) line;
+	stack_t *tmp = *top;
+
+	while (tmp)
+	{
+		printf("%d\n", tmp->n);
+		tmp = tmp->next;
+	}
 }
