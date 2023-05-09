@@ -1,29 +1,52 @@
 #include "monty.h"
 
 /**
- * push - function adds a new node to the stack with the given integer value,
- * 
- * 
-*/
+ * push - Insert an element into the stack
+ *
+ * @top: Top of the stack
+ * @line: Current line count in the bytecode file
+ *
+ * Return: (void)
+ */
 
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **top, unsigned int line)
 {
-    (void)line_number;
-    stack_t *new_node = malloc(sizeof(stack_t));
+	char *num;
+	stack_t *new = NULL;
 
-    if (new_node == NULL)
-    {
-        printf("Memory allocation failed\n");
-        exit(EXIT_FAILURE);
-    }
+	if (global.arg == NULL)
+	{
+		free_stack(*top);
+		fprintf(stderr, "L%d: usage: push integer\n", line);
+		exit(EXIT_FAILURE);
+	}
 
-    new_node->n = 0;
-    new_node->prev = NULL;
-    new_node->next = *stack;
+	num = global.arg;
+	if (*num == '-')
+		num++;
 
-    if (*stack != NULL)
-    {
-        (*stack)->prev = new_node;
-    }
-    *stack = new_node;
+	if (!is_num(num))
+	{
+		free_stack(*top);
+		fprintf(stderr, "L%d: usage: push integer\n", line);
+		exit(EXIT_FAILURE);
+	}
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		free_stack(*top);
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+
+	new->n = atoi(num);
+	new->next = *top;
+	new->prev = NULL;
+
+	if (*top)
+		(*top)->prev = new;
+
+	*top = new;
 }
+
