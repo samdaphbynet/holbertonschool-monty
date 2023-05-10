@@ -7,7 +7,7 @@
  * @ac: Argument count
  * @av: Argument vector
  *
- * Return: 0 on SUCCESS
+ * Return: 0 on SUCCESS, otherwise nothing and exit with status EXIT_FAILURE
  */
 
 int main(int ac, char **av)
