@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <ctype.h>
 
 /**
  * pchar - prints the char at the top of the stack.
@@ -14,7 +15,7 @@ void pchar(stack_t **top, unsigned int line)
 		global.status = EXIT_FAILURE;
 		return;
 	}
-	if ((*top)->n > 127 || (*top)->n < 0)
+	if (isascii((*top)->n) == 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line);
 		global.status = EXIT_FAILURE;
