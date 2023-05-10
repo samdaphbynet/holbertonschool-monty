@@ -15,11 +15,11 @@ void pchar(stack_t **top, unsigned int line)
 		global.status = EXIT_FAILURE;
 		return;
 	}
-	if (isascii((*top)->n) == 0)
+	if ((*top)->n < 0 || (*top)->n > 127)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line);
 		global.status = EXIT_FAILURE;
 		return;
 	}
-	printf("%c\n",(char)(*top)->n);
+	printf("%c\n", (*top)->n);
 }
