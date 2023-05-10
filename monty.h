@@ -46,18 +46,27 @@ typedef struct instruction_s
 typedef struct global_s
 {
 	char *arg;
+	int status;
 } global_t;
 
 extern global_t global;
 
 void free_stack(stack_t *);
 int is_num(char *);
-void pop(stack_t **top, unsigned int i);
-void swap(stack_t **top, unsigned int i);
+
 void push(stack_t **, unsigned int);
 void pall(stack_t **, unsigned int);
 void pint(stack_t **, unsigned int);
+void pop(stack_t **, unsigned int);
+void swap(stack_t **, unsigned int);
+void add(stack_t **, unsigned int);
+void nop(stack_t **, unsigned int);
+void sub(stack_t **, unsigned int);
+void _div(stack_t **, unsigned int);
+void mul(stack_t **, unsigned int);
+void mod(stack_t **, unsigned int);
 void opcode(stack_t **, char *, unsigned int);
+void swap(stack_t **top, unsigned int i);
 
 #endif
 
