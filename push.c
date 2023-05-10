@@ -1,7 +1,5 @@
 #include "monty.h"
 
-global_t global = {NULL};
-
 /**
  * push - Insert an element into the stack
  *
@@ -18,9 +16,9 @@ void push(stack_t **top, unsigned int line)
 
 	if (global.arg == NULL)
 	{
-		free_stack(*top);
 		fprintf(stderr, "L%d: usage: push integer\n", line);
-		exit(EXIT_FAILURE);
+		global.status = EXIT_FAILURE;
+		return;
 	}
 
 	num = global.arg;
@@ -29,17 +27,17 @@ void push(stack_t **top, unsigned int line)
 
 	if (!is_num(num))
 	{
-		free_stack(*top);
 		fprintf(stderr, "L%d: usage: push integer\n", line);
-		exit(EXIT_FAILURE);
+		global.status = EXIT_FAILURE;
+		return;
 	}
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		free_stack(*top);
 		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		global.status = EXIT_FAILURE;
+		return;
 	}
 
 	new->n = atoi(num);
@@ -51,4 +49,3 @@ void push(stack_t **top, unsigned int line)
 
 	*top = new;
 }
-

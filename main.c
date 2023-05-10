@@ -39,11 +39,17 @@ int main(int ac, char **av)
 		if (op)
 			opcode(&top, op, line);
 
+		if (global.status)
+			break;
 		line++;
 	}
 
 	free(buffer);
 	free_stack(top);
 	fclose(fd);
+
+	if (global.status)
+		exit(global.status);
+
 	return (0);
 }

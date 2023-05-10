@@ -40,8 +40,7 @@ void opcode(stack_t **top, char *arg, unsigned int line)
 	}
 
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, arg);
-	free_stack(*top);
-	exit(EXIT_FAILURE);
+	global.status = EXIT_FAILURE;
 }
 
 /**
