@@ -1,5 +1,7 @@
 #include "monty.h"
 
+global_t global = {NULL, 0};
+
 /**
  * push - Insert an element into the stack
  *
@@ -44,7 +46,7 @@ void push(stack_t **top, unsigned int line)
 	new->next = *top;
 	new->prev = NULL;
 
-	if (*top != NULL)
+	if (*top)
 		(*top)->prev = new;
 
 	*top = new;

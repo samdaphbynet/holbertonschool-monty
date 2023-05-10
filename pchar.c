@@ -23,3 +23,4 @@ void pchar(stack_t **top, unsigned int line)
 	}
 	printf("%c\n", (*top)->n);
 }
+
