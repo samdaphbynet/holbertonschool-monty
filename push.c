@@ -44,7 +44,7 @@ void push(stack_t **top, unsigned int line)
 	new->next = *top;
 	new->prev = NULL;
 
-	if (*top)
+	if (*top != NULL)
 		(*top)->prev = new;
 
 	*top = new;
