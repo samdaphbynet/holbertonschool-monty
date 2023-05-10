@@ -68,6 +68,7 @@ void mod(stack_t **, unsigned int);
 void opcode(stack_t **, char *, unsigned int);
 void swap(stack_t **top, unsigned int i);
 void pchar(stack_t **top, unsigned int line);
+void pstr(stack_t **top, unsigned int line);
 
 #endif
 
