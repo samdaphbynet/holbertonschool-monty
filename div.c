@@ -17,7 +17,7 @@ void _div(stack_t **top, unsigned int line)
     {
         if ((*top)->next)
         {
-            if ((*top)->next == 0)
+            if ((*top)->n == 0)
             {
                 fprintf(stderr, "L%d: division by zero\n", line);
                 global.status = EXIT_FAILURE;
