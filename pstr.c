@@ -13,7 +13,7 @@ void pstr(stack_t **top, unsigned int line)
 
 	while (tmp)
 	{
-		if (tmp->n <= 0 || tmp->n > 127)
+		if (tmp->n < 'A' || tmp->n > 'Z' || tmp->n < 'a' || tmp->n > 'z')
 		{
 			break;
 		}

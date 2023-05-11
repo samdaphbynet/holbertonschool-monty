@@ -8,15 +8,16 @@
 
 void pchar(stack_t **top, unsigned int line)
 {
-	stack_t *tmp;
-	tmp = *top;
-	if (!tmp)
+	int isNotLetter;
+	if (!*top)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line);
 		free_stack(*top);
 		global.status = EXIT_FAILURE;
 	}
-	if ((*top)->n < 0 || (*top)->n > 127)
+	inNotLetter = (*top)->n < 'A' || (*top)->n > 'Z' ||
+		 (*top)->n < 'a' || (*top)->n > 'z';
+	if (isNotLetter)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line);
 		free_stack(*top);
