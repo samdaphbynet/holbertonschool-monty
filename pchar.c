@@ -15,7 +15,7 @@ void pchar(stack_t **top, unsigned int line)
 		free_stack(*top);
 		global.status = EXIT_FAILURE;
 	}
-	inNotLetter = (*top)->n < 'A' || (*top)->n > 'Z' ||
+	isNotLetter = (*top)->n < 'A' || (*top)->n > 'Z' ||
 		 (*top)->n < 'a' || (*top)->n > 'z';
 	if (isNotLetter)
 	{
@@ -23,5 +23,5 @@ void pchar(stack_t **top, unsigned int line)
 		free_stack(*top);
 		global.status = EXIT_FAILURE;
 	}
-	printf("%c\n", tmp->n);
+	printf("%c\n", (char)(*top)->n);
 }
