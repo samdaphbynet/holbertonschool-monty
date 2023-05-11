@@ -10,10 +10,13 @@ void pstr(stack_t **top, unsigned int line)
 {
 	(void)line;
 	stack_t *tmp = *top;
+	int isNotLetter;
 
 	while (tmp)
 	{
-		if (tmp->n < 'A' || tmp->n > 'Z' || tmp->n < 'a' || tmp->n > 'z')
+		isNotLetter = (tmp->n < 'A' || tmp->n > 'Z') && (tmp->n < 'a' || tmp->n > 'z');
+	
+		if (isNotLetter)
 		{
 			break;
 		}

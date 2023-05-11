@@ -16,8 +16,8 @@ void pchar(stack_t **top, unsigned int line)
 		free_stack(*top);
 		global.status = EXIT_FAILURE;
 	}
-	isNotLetter = (*top)->n < 'A' || (*top)->n > 'Z' ||
-		 (*top)->n < 'a' || (*top)->n > 'z';
+	isNotLetter = ((*top)->n < 'A' || (*top)->n > 'Z') &&
+		 ((*top)->n < 'a' || (*top)->n > 'z');
 
 	if (isNotLetter)
 	{
