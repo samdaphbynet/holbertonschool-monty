@@ -11,27 +11,27 @@
 
 void _div(stack_t **top, unsigned int line)
 {
-    stack_t *next = NULL, *tmp = NULL;
+	stack_t *next = NULL, *tmp = NULL;
 
-    if (*top)
-    {
-        if ((*top)->next)
-        {
-            if ((*top)->n == 0)
-            {
-                fprintf(stderr, "L%d: division by zero\n", line);
-                global.status = EXIT_FAILURE;
-                return;
-            }
-            next = (*top)->next;
-            next->n /= (*top)->n;
+	if (*top)
+	{
+		if ((*top)->next)
+		{
+			if ((*top)->n == 0)
+			{
+				fprintf(stderr, "L%d: division by zero\n", line);
+				global.status = EXIT_FAILURE;
+				return;
+			}
+			next = (*top)->next;
+			next->n /= (*top)->n;
 
-            tmp = *top;
-            *top = tmp->next;
-            free(tmp);
-            return;
-        }
-    }
-    fprintf(stderr, "L%d: can't div, stack too short\n", line);
+			tmp = *top;
+			*top = tmp->next;
+			free(tmp);
+			return;
+		}
+	}
+	fprintf(stderr, "L%d: can't div, stack too short\n", line);
 	global.status = EXIT_FAILURE;
 }
