@@ -13,8 +13,8 @@ void pchar(stack_t **top, unsigned int line)
 	if (!*top)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line);
-		free_stack(*top);
 		global.status = EXIT_FAILURE;
+		return;
 	}
 	isNotLetter = ((*top)->n < 'A' || (*top)->n > 'Z') &&
 		 ((*top)->n < 'a' || (*top)->n > 'z');
@@ -22,8 +22,8 @@ void pchar(stack_t **top, unsigned int line)
 	if (isNotLetter)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line);
-		free_stack(*top);
 		global.status = EXIT_FAILURE;
+		return;
 	}
 	printf("%c\n", (char)(*top)->n);
 }
